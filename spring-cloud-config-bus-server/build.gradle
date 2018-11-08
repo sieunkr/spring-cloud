@@ -1,0 +1,45 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+ext {
+    springCloudVersion = 'Finchley.SR2'
+}
+
+dependencies {
+
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    //TODO:Spring Cloud Bus 필요한지 확인. RabbitMQ 디펜던시만 추가하면 될 듯
+    implementation('org.springframework.cloud:spring-cloud-starter-bus-amqp')
+    implementation('org.springframework.cloud:spring-cloud-config-server')
+    implementation('org.springframework.cloud:spring-cloud-config-monitor')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
