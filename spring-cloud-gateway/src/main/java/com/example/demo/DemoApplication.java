@@ -20,8 +20,8 @@ public class DemoApplication {
                 .route(r -> r.path("/a/b/**")
                         .filters(f -> f.stripPrefix(2)
                                 .filter(new CustomFilter())
-                                .addResponseHeader("X-Response-Default", "a"))
-                        .uri("")
+                                .addResponseHeader("X-Response-Default-z", "Default-y"))
+                        .uri("lb://CONSUMER")
                         .order(0)
                 )
                 .build();
