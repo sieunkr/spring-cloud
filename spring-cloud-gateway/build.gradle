@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.7.RELEASE'
+        springBootVersion = '2.1.1.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -21,13 +21,15 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven { url "https://repo.spring.io/milestone" }
 }
 
-ext['springCloudVersion'] = 'Finchley.SR2'
+ext['springCloudVersion'] = 'Greenwich.RC2'
 
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-webflux')
     implementation('org.springframework.cloud:spring-cloud-starter-gateway')
+    implementation('org.springframework.cloud:spring-cloud-starter-security')
     compileOnly('org.projectlombok:lombok')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }

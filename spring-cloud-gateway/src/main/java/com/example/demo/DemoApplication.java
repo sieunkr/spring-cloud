@@ -14,12 +14,17 @@ public class DemoApplication {
     }
 
     @Bean
-    public RouteLocator customRouteLocator(RouteLocatorBuilder builder){
+    public RouteLocator customerRouteLocator(RouteLocatorBuilder builder) {
+        // @formatter:off
         return builder.routes()
-                .route(r ->
-                        r.path("/zum/**")
-                                .uri("http://zum.com")
+                .route(r -> r.path("/a/b/**")
+                        .filters(f -> f.stripPrefix(2)
+                                .filter(new CustomFilter())
+                                .addResponseHeader("X-Response-Default", "a"))
+                        .uri("")
+                        .order(0)
                 )
                 .build();
+        // @formatter:on
     }
 }
