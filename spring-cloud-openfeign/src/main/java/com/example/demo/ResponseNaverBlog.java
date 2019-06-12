@@ -10,6 +10,8 @@ import java.util.List;
 @NoArgsConstructor
 public class ResponseNaverBlog implements Serializable {
 
+    public static ResponseNaverBlog EMPTY = new ResponseNaverBlog();
+
     private String lastBuildDate;
     private Integer total;
     private Integer start;
