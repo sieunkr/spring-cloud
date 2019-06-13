@@ -19,4 +19,10 @@ public class BlogController {
         return blogService.findBlogByQuery("스프링부트");
     }
 
+    @Deprecated
+    @GetMapping("legacy-blog")
+    public ResponseNaverBlog legacyFindBlogByQuery(){
+        return blogService.legacyFindBlogByQuery("스프링부트");
+    }
+
 }

@@ -3,7 +3,7 @@ package com.example.demo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name = "post-api", url = "${naver.openapi.url}", fallback = NaverOpenApiClientFallback.class)
+@FeignClient(name = "naver-open-api", url = "${naver.openapi.url}", fallback = NaverOpenApiClientFallback.class)
 public interface NaverOpenApiClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/v1/search/blog.json", produces = "application/json")
