@@ -18,15 +18,16 @@ public class BlogService {
     private final NaverOpenApiProperties naverOpenApiProperties;
     private final NaverOpenApiClient naverOpenApiClient;
 
-    private RestTemplate restTemplate = new RestTemplate();
-
-    public BlogService(NaverOpenApiProperties naverOpenApiProperties, NaverOpenApiClient naverOpenApiClient) {
+    public BlogService(NaverOpenApiProperties naverOpenApiProperties,
+                       NaverOpenApiClient naverOpenApiClient) {
         this.naverOpenApiProperties = naverOpenApiProperties;
         this.naverOpenApiClient = naverOpenApiClient;
     }
 
     public ResponseNaverBlog findBlogByQuery(String query){
-        return naverOpenApiClient.findBlogByQuery(naverOpenApiProperties.getClientId(), naverOpenApiProperties.getClientSecret(), query);
+        return naverOpenApiClient.findBlogByQuery(naverOpenApiProperties.getClientId(),
+                                                  naverOpenApiProperties.getClientSecret(),
+                                                  query);
     }
 
     @Deprecated
@@ -43,7 +44,9 @@ public class BlogService {
         headerMap.add("Content-Type", MediaType.APPLICATION_JSON_VALUE);
         HttpEntity<?> headers = new HttpEntity<>(headerMap);
 
-        ResponseEntity<ResponseNaverBlog> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, headers, ResponseNaverBlog.class);
+        ResponseEntity<ResponseNaverBlog> responseEntity =
+                restTemplate.exchange(uri, HttpMethod.GET, headers, ResponseNaverBlog.class);
+
         return responseEntity.getBody();
     }
 
