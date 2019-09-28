@@ -1,22 +1,11 @@
 package com.example.demo;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-@Service
-@RequiredArgsConstructor
-public class CafeUseCase {
+public interface CafeUseCase {
 
-    private final CafeClient cafeClient;
-
-    public List<String> getCoffees(){
-        return cafeClient.getCoffees();
-    }
-
-    public List<String> getJuices(){
-        return cafeClient.getJuices();
-    }
-
+    CompletableFuture<List<String>> getCoffees();
+    CompletableFuture<List<String>> getJuices();
+    CompletableFuture<List<String>> getAll();
 }
