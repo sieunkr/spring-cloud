@@ -13,6 +13,13 @@ public class HomeController {
 
     @GetMapping("/coffees")
     public List<String> getCoffees(){
+
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         return Arrays.asList("latte", "mocha");
     }
 
