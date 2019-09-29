@@ -16,8 +16,8 @@ public class RestTemplateConfig {
             setRequestFactory(new HttpComponentsClientHttpRequestFactory(HttpClientBuilder
                     .create()
                     .setConnectionManager(new PoolingHttpClientConnectionManager() {{
-                        setDefaultMaxPerRoute(20);
-                        setMaxTotal(100);
+                        setDefaultMaxPerRoute(10);
+                        setMaxTotal(30);
                     }}).build()));
         }};
     }

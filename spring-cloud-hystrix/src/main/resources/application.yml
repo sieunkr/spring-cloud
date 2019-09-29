@@ -10,7 +10,7 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 5000       #Timeout fallback
+            timeoutInMilliseconds: 1000       #Timeout fallback
       circuitBreaker:
         requestVolumeThreshold: 2             #
         errorThresholdPercentage: 50          # circuit open 에러 비율
