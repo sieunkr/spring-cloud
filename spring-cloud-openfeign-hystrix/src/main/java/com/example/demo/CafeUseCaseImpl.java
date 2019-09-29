@@ -14,15 +14,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CafeUseCaseImpl implements CafeUseCase {
 
-    private final CafeClient cafeClient;
+    private final CoffeeClient coffeeClient;
+    private final JuiceClient juiceClient;
     private final ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
     public CompletableFuture<List<String>> getCoffees(){
-        return CompletableFuture.supplyAsync(cafeClient::getCoffees, threadPoolTaskExecutor);
+        return CompletableFuture.supplyAsync(coffeeClient::getCoffees, threadPoolTaskExecutor);
     }
 
     public CompletableFuture<List<String>> getJuices(){
-        return CompletableFuture.supplyAsync(cafeClient::getJuices, threadPoolTaskExecutor);
+        return CompletableFuture.supplyAsync(juiceClient::getJuices, threadPoolTaskExecutor);
     }
 
     public CompletableFuture<List<String>> getAll(){
@@ -41,8 +42,8 @@ public class CafeUseCaseImpl implements CafeUseCase {
 
         */
 
-        CompletableFuture futureByCoffee = CompletableFuture.supplyAsync(cafeClient::getCoffees, threadPoolTaskExecutor);
-        CompletableFuture futureByJuice = CompletableFuture.supplyAsync(cafeClient::getJuices, threadPoolTaskExecutor);
+        CompletableFuture futureByCoffee = CompletableFuture.supplyAsync(coffeeClient::getCoffees, threadPoolTaskExecutor);
+        CompletableFuture futureByJuice = CompletableFuture.supplyAsync(juiceClient::getJuices, threadPoolTaskExecutor);
 
         List<CompletableFuture<List<String>>> futureList =
                 Arrays.asList(futureByCoffee, futureByJuice);
@@ -54,5 +55,4 @@ public class CafeUseCaseImpl implements CafeUseCase {
                         .collect(Collectors.toList())
                 );
     }
-
 }

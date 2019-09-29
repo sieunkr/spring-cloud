@@ -15,7 +15,7 @@ public class HomeController {
     public List<String> getCoffees(){
 
         try {
-            Thread.sleep(300);
+            Thread.sleep(400);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

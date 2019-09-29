@@ -6,12 +6,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient(name = "cafe-api", url = "${cafe.api.url}",
-        fallbackFactory = CafeClientFallbackFactory.class)
-public interface CafeClient {
-
-    @RequestMapping(method = RequestMethod.GET, value = "/api/coffees", produces = "application/json")
-    List<String> getCoffees();
+@FeignClient(name = "juice-api", url = "${cafe.api.url}",
+        fallbackFactory = JuiceClientFallbackFactory.class)
+public interface JuiceClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/api/juices", produces = "application/json")
     List<String> getJuices();
