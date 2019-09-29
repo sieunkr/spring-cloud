@@ -18,7 +18,6 @@ public class CoffeeComponent {
 
     private final RestTemplate coffeeRestTemplate;
 
-
     @HystrixCommand(fallbackMethod = "getCoffeeFallback")
     public List<String> getCoffee(){
 
@@ -38,6 +37,7 @@ public class CoffeeComponent {
 
         log.info(e.toString());
 
+        //TODO:FallBack 처리 비즈니스 로직
         return Collections.emptyList();
     }
 

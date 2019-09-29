@@ -25,6 +25,11 @@ public class HomeController {
 
     @GetMapping("/juices")
     public List<String> getJuices(){
+        try {
+            Thread.sleep(30);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return Arrays.asList("orange");
     }
 }
