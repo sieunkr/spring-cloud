@@ -42,8 +42,10 @@ public class CafeUseCaseImpl implements CafeUseCase {
 
         */
 
-        CompletableFuture futureByCoffee = CompletableFuture.supplyAsync(coffeeClient::getCoffees, threadPoolTaskExecutor);
-        CompletableFuture futureByJuice = CompletableFuture.supplyAsync(juiceClient::getJuices, threadPoolTaskExecutor);
+        CompletableFuture futureByCoffee =
+                CompletableFuture.supplyAsync(coffeeClient::getCoffees, threadPoolTaskExecutor);
+        CompletableFuture futureByJuice =
+                CompletableFuture.supplyAsync(juiceClient::getJuices, threadPoolTaskExecutor);
 
         List<CompletableFuture<List<String>>> futureList =
                 Arrays.asList(futureByCoffee, futureByJuice);

@@ -14,12 +14,12 @@ public class CafeController {
 
     private final CafeService cafeService;
 
-    @GetMapping("/a")
+    @GetMapping("/nomal")
     public List<String> getJuiceAll(){
         return cafeService.getJuice();
     }
 
-    @GetMapping("/b")
+    @GetMapping("/delay")
     public List<String> getCoffeeAll(){
         return cafeService.getCoffee();
     }
