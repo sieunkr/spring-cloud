@@ -1,0 +1,17 @@
+hystrix:
+  threadpool:
+    default:
+      coreSize: 100
+      maximumSize: 500
+      keepAliveTimeMinutes: 1
+      allowMaximumSizeToDivergeFromCoreSize: true
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000       #Timeout fallback
+      circuitBreaker:
+        requestVolumeThreshold: 2             #
+        errorThresholdPercentage: 50          # circuit open 에러 비율
+        enabled: true
